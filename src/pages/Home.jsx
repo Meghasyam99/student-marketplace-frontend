@@ -1,3 +1,4 @@
+import BASE_URL from '../api';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import ProductCard from '../components/ProductCard';
@@ -20,7 +21,7 @@ export default function Home() {
       const params = {};
       if (category !== 'All') params.category = category;
       if (search) params.search = search;
-      const { data } = await axios.get('http://localhost:5000/api/products', { params });
+      const { data } = await axios.get(`${BASE_URL}/api/products`, { params });
       setProducts(data);
     } catch (err) {
       console.error(err);

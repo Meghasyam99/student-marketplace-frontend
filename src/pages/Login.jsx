@@ -1,3 +1,4 @@
+import BASE_URL from '../api';
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
@@ -14,7 +15,7 @@ export default function Login() {
     e.preventDefault();
     setLoading(true);
     try {
-      const { data } = await axios.post('http://localhost:5000/api/auth/login', form);
+      const { data } = await axios.get(`${BASE_URL}/api/products`, form);
       login(data);
       toast.success('Welcome back!');
       navigate('/');

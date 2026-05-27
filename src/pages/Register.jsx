@@ -14,7 +14,7 @@ export default function Register() {
     e.preventDefault();
     setLoading(true);
     try {
-      const { data } = await axios.post('http://localhost:5000/api/auth/register', form);
+      const { data } = await axios.get(`${BASE_URL}/api/products`, form);
       login(data);
       toast.success('Account created!');
       navigate('/');

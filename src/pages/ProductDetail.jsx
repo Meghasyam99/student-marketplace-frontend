@@ -1,3 +1,4 @@
+import BASE_URL from '../api';
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -22,7 +23,7 @@ export default function ProductDetail() {
   const handleDelete = async () => {
     if (!window.confirm('Delete this product?')) return;
     try {
-      await axios.delete(`http://localhost:5000/api/products/${id}`, {
+      await axios.get(`${BASE_URL}/api/products`, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       toast.success('Product deleted');

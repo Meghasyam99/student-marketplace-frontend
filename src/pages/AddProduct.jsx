@@ -1,3 +1,4 @@
+import BASE_URL from '../api';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -26,7 +27,7 @@ export default function AddProduct() {
       Object.entries(form).forEach(([k, v]) => formData.append(k, v));
       images.forEach((img) => formData.append('images', img));
 
-      await axios.post('http://localhost:5000/api/products', formData, {
+      await axios.get(`${BASE_URL}/api/products`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${user.token}`,
